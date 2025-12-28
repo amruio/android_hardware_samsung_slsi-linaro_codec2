@@ -223,6 +223,10 @@ cc_defaults {
         "c2component/Exynos_C2_DecComponent.cpp",
         "filter/codec/Exynos_CodecDecBase_Filter.cpp",
     ],
+    cflags: [] + select(soong_config_variable("openmax", "UNSUPPORT_10BIT"), {
+        "true": ["-DUNSUPPORT_10BIT"],
+        default: [],
+    }),
 }
 
 cc_library_shared {
